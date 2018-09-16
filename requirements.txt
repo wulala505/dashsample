@@ -1,2 +1,5 @@
 gunicorn
 Flask
+dash==0.26.5
+dash-html-components==0.12.0
+dash-core-components==0.28.0
