@@ -1,1 +1,1 @@
-clock: python scheduleT.py
+web: gunicorn dash_sample.py
