@@ -16,7 +16,7 @@ app = dash.Dash("__name__")
 app.config['suppress_callback_exceptions']=True
 app.css.append_css({"external_url":"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"})
 revenue = [1000,2000,6000,2000]
-items = ["娛樂","零食","住宿費","孝親費"]
+items = ["Entertainment","Food","Rent","Fee"]
 colors = ['rgba(255, 0, 0, 0.4)','rgba(201, 0, 10, 0.4)','rgba(255, 0, 30, 0.4)','rgba(255, 20, 0, 0.4)']
 app.layout = html.Div(  
     [
@@ -28,7 +28,7 @@ app.layout = html.Div(
                     figure=dict(
                         marker={"color":colors},
                         data=[go.Pie(values=revenue,labels=items )],
-                        layout={"title":"花費比例","width":"300","height":"300"}
+                        layout={"title":"Spent Rate","width":"300","height":"300"}
                     )      
                 ),
                 className="col" ,
@@ -39,7 +39,7 @@ app.layout = html.Div(
                     id="graph-2",
                     figure=dict(                     
                         data=[go.Bar(x=revenue,y=items ,orientation = 'h',marker={"color":"rgba(205,0,0,0.2)"},)], 
-                        layout={"title":"各項花費(元)","width":"300","height":"300"}
+                        layout={"title":"Expance Ratio","width":"300","height":"300"}
                     )
                 ),
                 className="col"
@@ -62,14 +62,14 @@ def update(value_0,value_1,value_2,value_3):
     revenue = [ value_0,value_1,value_2,value_3]
     return {
         "data":[go.Pie(values=revenue,labels=items )],
-        "layout":{"title":"花費比例","width":"300","height":"300"}
+        "layout":{"title":"Expance Ratio","width":"300","height":"300"}
     }
 @app.callback( Output('graph-2','figure'),[Input('slider_0','value'),Input('slider_1','value'),Input('slider_2','value'),Input('slider_3','value')] )
 def update_1(value_0,value_1,value_2,value_3):
     revenue = [value_0,value_1,value_2,value_3]
     return {
         "data":[go.Bar(x=revenue,y=items ,orientation = 'h')],
-        "layout":{"title":"各項花費(元)","xaxis":{'range':[1000,10000]}}
+        "layout":{"title":"all expance","xaxis":{'range':[1000,10000]}}
     }
 if __name__ == "__main__":
     app.run_server(debug=True)
