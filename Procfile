@@ -1,1 +1,1 @@
-web: gunicorn dash_sample.py
+web: gunicorn dash_sample:app
