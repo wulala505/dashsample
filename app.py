@@ -60,16 +60,16 @@ app.layout = html.Div(
     style={"height":"900","width":"1000"},
     id="demo_1"
 )
-@app.callback( Output('graph-1','figure'),[Input('slider_0','value')] )
-def update(value_0):
-    revenue = [ value_0]
+@app.callback( Output('graph-1','figure'),[Input('slider_0','value'),Input('slider_1','value'),Input('slider_2','value'),Input('slider_3','value')] )
+def update(value_0,value_1,value_2,value_3):
+    revenue = [ value_0,value_1,value_2,value_3]
     return {
         "data":[go.Pie(values=revenue,labels=items )],
         "layout":{"title":"花費比例","width":"300","height":"300"}
     }
-@app.callback( Output('graph-2','figure'),[Input('slider_0','value')] )
-def update_1(value_0):
-    revenue = [value_0]
+@app.callback( Output('graph-2','figure'),[Input('slider_0','value'),Input('slider_1','value'),Input('slider_2','value'),Input('slider_3','value')] )
+def update_1(value_0,value_1,value_2,value_3):
+    revenue = [value_0,value_1,value_2,value_3]
     return {
         "data":[go.Bar(x=revenue,y=items ,orientation = 'h')],
         "layout":{"title":"各項花費(元)","xaxis":{'range':[1000,10000]}}
