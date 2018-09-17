@@ -6,14 +6,17 @@ Created on Sun Sep 16 23:54:52 2018
 @author: wulala
 """
 
+import os
 import dash
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
 
-app = dash.Dash("__name__")
-app.config['suppress_callback_exceptions']=True
+
+app = dash.Dash(__name__)
+server = app.server
+
 app.css.append_css({"external_url":"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"})
 revenue = [1000,2000,6000,2000]
 items = ["娛樂","零食","住宿費","孝親費"]
