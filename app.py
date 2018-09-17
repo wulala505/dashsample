@@ -51,7 +51,7 @@ app.layout = html.Div(
             style={"width":"760"}
         ),
         html.Div([
-            dcc.Slider(min=1000,max=10000,step=500,value=revenue[i],id='slider_0'.format(i) ) for i in range(len(items))
+            dcc.Slider(min=1000,max=10000,step=500,value=revenue[0],id='slider_0'.format(i) ) )
             ],
             style={"margin-top":"-50","width":"500","margin-left":"200"},
         )
@@ -61,15 +61,15 @@ app.layout = html.Div(
     id="demo_1"
 )
 @app.callback( Output('graph-1','figure'),[Input('slider_0','value')] )
-def update(value_0,value_1,value_2,value_3):
-    revenue = [ value_0,value_1,value_2,value_3]
+def update(value_0):
+    revenue = [ value_0]
     return {
         "data":[go.Pie(values=revenue,labels=items )],
         "layout":{"title":"花費比例","width":"300","height":"300"}
     }
 @app.callback( Output('graph-2','figure'),[Input('slider_0','value')] )
-def update_1(value_0,value_1,value_2,value_3):
-    revenue = [value_0,value_1,value_2,value_3]
+def update_1(value_0):
+    revenue = [value_0]
     return {
         "data":[go.Bar(x=revenue,y=items ,orientation = 'h')],
         "layout":{"title":"各項花費(元)","xaxis":{'range':[1000,10000]}}
