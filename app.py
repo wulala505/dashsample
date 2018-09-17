@@ -51,9 +51,7 @@ app.layout = html.Div(
             style={"width":"760"}
         ),
         html.Div([
-            dcc.Slider(min=1000,max=10000,step=500,value=revenue[i],id="slider_0".format(i) ) for i in range(len(items)),
-            dcc.Slider(min=1000,max=10000,step=500,value=revenue[i],id="slider_1".format(i) ) for i in range(len(items)),
-            dcc.Slider(min=1000,max=10000,step=500,value=revenue[i],id="slider_2".format(i) ) for i in range(len(items))
+            dcc.Slider(min=1000,max=10000,step=500,value=revenue[i],id='slider_{}'.format(i) ) for i in range(len(items)),
             ],
             style={"margin-top":"-50","width":"500","margin-left":"200"},
         )
